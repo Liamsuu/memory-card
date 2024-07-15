@@ -1,4 +1,41 @@
 #root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5%;
   height: 100vh;
   width: 100vw;
+  background-color: #444444;
+  color: #ffffff;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+#scoreboards {
+  text-align: center;
+  font-size: 2rem;
+}
+
+#current-score {
+  margin-bottom: 0.5rem;
+}
+
+#high-score {
+  margin-top: 0.5rem;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 80vw;
+  align-items: center;
+}
+
+#cards div {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  height: 100%;
+  width: 100%;
 }
