@@ -32,10 +32,15 @@
   align-items: center;
 }
 
-#cards div {
+#card-grids {
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(4, 1fr);
   height: 100%;
   width: 100%;
+}
+
+#card-grids div button {
+  width: 100%;
+  height: 100%;
 }

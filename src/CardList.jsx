@@ -69,6 +69,8 @@ function Card({ alreadyClicked, pokeName, pokeImage, addScorePoint }) {
 }
 
 export default function CardList({ score, setScore }) {
+  // it says score isn't used, but it is. The card component will use the score
+  // updating method to update it, don't remove the property from here.
   const [cardArr, setCardArr] = useState([
     {
       id: uuidv4(),
@@ -259,11 +261,26 @@ export default function CardList({ score, setScore }) {
     setScore((score) => score + 1);
   }
 
+  function shuffleNoRepeat(array) {
+    let copy = array.slice(0);
+    return function () {
+      if (copy.length < 1) {
+        copy = array.slice(0);
+      }
+      let index = Math.floor(Math.random() * copy.length);
+      let item = copy[index];
+      copy.splice(index, 1);
+      return item;
+    };
+  }
+
   function displayCards() {
-    return cardArr.map((card) => {
-      return <div key={card.id}>{card.component}</div>;
+    let chooser = shuffleNoRepeat(cardArr);
+    return cardArr.map(() => {
+      let choice = chooser();
+      return <div key={choice.id}>{choice.component}</div>;
     });
   }
 
-  return <>{displayCards()}</>;
+  return <div id="card-grids">{displayCards()}</div>;
 }
