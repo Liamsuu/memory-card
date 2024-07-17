@@ -46,7 +46,7 @@ const lucarioData = await fetch("https://pokeapi.co/api/v2/pokemon/lucario", {
 });
 const lucarioJson = await lucarioData.json();
 
-function Card({ shuffleCards, alreadyClicked, pokeName, pokeImage }) {
+function Card({ alreadyClicked, pokeName, pokeImage, addScorePoint }) {
   const [clicked, setClicked] = useState(false);
 
   function handleClick() {
@@ -54,8 +54,8 @@ function Card({ shuffleCards, alreadyClicked, pokeName, pokeImage }) {
     if (clicked === true) {
       alreadyClicked();
     } else {
+      addScorePoint();
       setClicked(true);
-      shuffleCards();
     }
   }
 
@@ -69,109 +69,188 @@ function Card({ shuffleCards, alreadyClicked, pokeName, pokeImage }) {
   );
 }
 
-// use the pokemon API when back to create some details
 export default function CardList({ score, setScore, highscore, setHighscore }) {
   const [cardArr, setCardArr] = useState([
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName="Pikachu"
-      pokeImage={pikachuJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Ditto"}
-      pokeImage={dittoJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Charmander"}
-      pokeImage={charmanderJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Raichu"}
-      pokeImage={raichuJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Jigglypuff"}
-      pokeImage={jigglypuffJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Squirtle"}
-      pokeImage={squirtleJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Charizard"}
-      pokeImage={charizardJson.sprites.front_default}
-    />,
-    <Card
-      key={uuidv4()}
-      shuffleCards={shuffleCards}
-      alreadyClicked={alreadyClickedHandler}
-      pokeName={"Lucario"}
-      pokeImage={lucarioJson.sprites.front_default}
-    />,
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName="Pikachu"
+          pokeImage={pikachuJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Ditto"}
+          pokeImage={dittoJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Charmander"}
+          pokeImage={charmanderJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Raichu"}
+          pokeImage={raichuJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Jigglypuff"}
+          pokeImage={jigglypuffJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Squirtle"}
+          pokeImage={squirtleJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Charizard"}
+          pokeImage={charizardJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
+    {
+      id: uuidv4(),
+      component: (
+        <Card
+          alreadyClicked={alreadyClickedHandler}
+          pokeName={"Lucario"}
+          pokeImage={lucarioJson.sprites.front_default}
+          addScorePoint={addScorePoint}
+        />
+      ),
+    },
   ]);
 
   function alreadyClickedHandler() {
     setCardArr([
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
-      <Card
-        key={uuidv4()}
-        shuffleCards={shuffleCards}
-        alreadyClicked={alreadyClickedHandler}
-      />,
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName="Pikachu"
+            pokeImage={pikachuJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Ditto"}
+            pokeImage={dittoJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Charmander"}
+            pokeImage={charmanderJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Raichu"}
+            pokeImage={raichuJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Jigglypuff"}
+            pokeImage={jigglypuffJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Squirtle"}
+            pokeImage={squirtleJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Charizard"}
+            pokeImage={charizardJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
+      {
+        id: uuidv4(),
+        component: (
+          <Card
+            alreadyClicked={alreadyClickedHandler}
+            pokeName={"Lucario"}
+            pokeImage={lucarioJson.sprites.front_default}
+            addScorePoint={addScorePoint}
+          />
+        ),
+      },
     ]);
     if (score > highscore) {
       setHighscore(score);
@@ -179,25 +258,18 @@ export default function CardList({ score, setScore, highscore, setHighscore }) {
     } else {
       setScore(0);
     }
-    shuffleCards();
+    displayCards();
   }
 
-  function shuffleCards() {
-    const shuffledCardsArr = cardArr
-      .map((val) => ({ val, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ val }) => val);
-    setCardArr(shuffledCardsArr);
+  function addScorePoint() {
+    setScore((score) => score + 1);
   }
 
   function displayCards() {
     return cardArr.map((card) => {
-      return <>{card}</>;
+      return <div key={card.id}>{card.component}</div>;
     });
   }
 
-  return <div>{displayCards()}</div>;
+  return <>{displayCards()}</>;
 }
-
-// NOTE: IT RESHUFFLES BUT IT DOES NOT REGISTER A CLICK PERHAPS IT CREATES A NEW OBJECT EACH RESHUFFLE BUT JUST KEEPS IT VALUES FROM THE OLD OBJECT
-// WHICH IS WRONGGGGGGG

@@ -5,7 +5,7 @@ import CardList from "./CardList";
 function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
-
+  console.log(score);
   return (
     <>
       <section id="scoreboards">
