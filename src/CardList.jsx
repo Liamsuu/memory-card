@@ -48,7 +48,6 @@ const lucarioJson = await lucarioData.json();
 
 function Card({ alreadyClicked, pokeName, pokeImage, addScorePoint }) {
   const [clicked, setClicked] = useState(false);
-
   function handleClick() {
     // will run after click of button
     if (clicked === true) {
@@ -69,7 +68,7 @@ function Card({ alreadyClicked, pokeName, pokeImage, addScorePoint }) {
   );
 }
 
-export default function CardList({ score, setScore, highscore, setHighscore }) {
+export default function CardList({ score, setScore }) {
   const [cardArr, setCardArr] = useState([
     {
       id: uuidv4(),
@@ -252,13 +251,8 @@ export default function CardList({ score, setScore, highscore, setHighscore }) {
         ),
       },
     ]);
-    if (score > highscore) {
-      setHighscore(score);
-      setScore(0);
-    } else {
-      setScore(0);
-    }
-    displayCards();
+
+    setScore(0);
   }
 
   function addScorePoint() {

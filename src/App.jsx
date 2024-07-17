@@ -5,7 +5,7 @@ import CardList from "./CardList";
 function App() {
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
-  console.log(score);
+  score > highscore && setHighscore(score);
   return (
     <>
       <section id="scoreboards">
@@ -14,12 +14,8 @@ function App() {
       </section>
       <section id="cards">
         <p>Click the cards below, but only click them once!</p>
-        <CardList
-          score={score}
-          setScore={setScore}
-          highscore={highscore}
-          setHighscore={setHighscore}
-        />
+
+        <CardList score={score} setScore={setScore} />
       </section>
     </>
   );
